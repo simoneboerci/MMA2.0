@@ -1,14 +1,10 @@
 import '../assets/asset_list.dart';
 
-import '../mmc/mmc_settings.dart';
-
 class MoneyManagementCalculator{
 
   //Public Variables
 
   static MoneyManagementCalculator instance;
-
-  MMCSettings mmcSettings;
 
   //Private Variables
 
