@@ -1,15 +1,26 @@
 import '../assets/asset_list.dart';
-import '../mmc/percentage_sheet.dart';
+
+import '../mmc/mmc_settings.dart';
 
 class MoneyManagementCalculator{
+
+  //Public Variables
+
+  static MoneyManagementCalculator instance;
+
+  MMCSettings mmcSettings;
 
   //Private Variables
 
   double _amount;
   AssetList _assetList;
-  PercentageSheet _percentageSheet;
 
-  MoneyManagementCalculator(this._percentageSheet);
+  MoneyManagementCalculator(this.mmcSettings){
+    if(instance == null)
+      instance = this;
+  }
+
+  MoneyManagementCalculator.defaultSettings() : this(MMCSettings.defaultSettings());
 
   //Public Methods
 
@@ -35,8 +46,8 @@ class MoneyManagementCalculator{
   }
 
   void _calculateMainCardMoney(){
-    double _commission = _assetList.mainCard().money / 100 * _percentageSheet.commission().value();
-    double _cashback = _commission / 100 * _percentageSheet.cashback().value();
+    double _commission = _assetList.mainCard().money / 100 * mmcSettings.percentageSheet.commission().value();
+    double _cashback = _commission / 100 * mmcSettings.percentageSheet.cashback().value();
 
     _assetList.bonusAccount().money += _cashback;
     _assetList.mainCard().money -= _commission;
@@ -46,18 +57,18 @@ class MoneyManagementCalculator{
   }
 
   void _calculatePersonalCardMoney(){
-    double _commission = _assetList.personalCard().money / 100 * _percentageSheet.commission().value();
-    double _cashback = _commission / 100 * _percentageSheet.cashback().value();
+    double _commission = _assetList.personalCard().money / 100 * mmcSettings.percentageSheet.commission().value();
+    double _cashback = _commission / 100 * mmcSettings.percentageSheet.cashback().value();
 
     _assetList.bonusAccount().money += _cashback;
     _assetList.personalCard().money -= _commission;
 
-    double _savings = _assetList.personalCard().money / 100 * _percentageSheet.savings().value();
+    double _savings = _assetList.personalCard().money / 100 * mmcSettings.percentageSheet.savings().value();
 
     _assetList.personalCard().money -= _savings;
     _assetList.savingsAccount().money += _savings;
 
-    double _business = _assetList.personalCard().money / 100 * _percentageSheet.business().value();
+    double _business = _assetList.personalCard().money / 100 * mmcSettings.percentageSheet.business().value();
 
     _assetList.personalCard().money -= _business;
     _assetList.businessCard().money += _business;
@@ -66,13 +77,13 @@ class MoneyManagementCalculator{
   }
 
   void _calculateBusinessCardMoney(){
-    double _commission = _assetList.businessCard().money / 100 * _percentageSheet.commission().value();
-    double _cashback = _commission / 100 * _percentageSheet.cashback().value();
+    double _commission = _assetList.businessCard().money / 100 * mmcSettings.percentageSheet.commission().value();
+    double _cashback = _commission / 100 * mmcSettings.percentageSheet.cashback().value();
 
     _assetList.bonusAccount().money += _cashback;
     _assetList.businessCard().money -= _commission;
 
-    double _investments = _assetList.businessCard().money / 100 * _percentageSheet.investments().value();
+    double _investments = _assetList.businessCard().money / 100 * mmcSettings.percentageSheet.investments().value();
 
     _assetList.businessCard().money -= _investments;
     _assetList.investmentsAccount().money += _investments;
@@ -86,5 +97,7 @@ class MoneyManagementCalculator{
 
     if(_leftovers > 0)
       _assetList.bonusAccount().money += _leftovers;
+    else if(_leftovers < 0)
+      _assetList.bonusAccount().money -= _leftovers;
   }
 }

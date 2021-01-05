@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
+import './models/managers/money_management_calculator.dart';
+
 import './screens/calculator_screen.dart';
 
-void main() => runApp(MainWidget());
+void main() {
+
+  MoneyManagementCalculator.defaultSettings();
+
+  runApp(MainWidget());
+}
 
 class MainWidget extends StatelessWidget{
   @override
