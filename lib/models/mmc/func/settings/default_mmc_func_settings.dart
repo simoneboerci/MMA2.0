@@ -1,6 +1,6 @@
 import 'package:mmc/models/mmc/percentage_sheet.dart';
 
-import 'mmc_func_settings.dart';
+import '../base/mmc_func_settings.dart';
 
 class DefaultMMCFuncSettings extends MMCFuncSettings{
 

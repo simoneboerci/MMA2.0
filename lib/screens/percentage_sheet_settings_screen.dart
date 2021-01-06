@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/managers/money_management_calculator.dart';
-
 import '../widgets/percentage_edit_widget.dart';
+
+import '../models/managers/mmc_functions.dart';
 
 class PercentageSheetSettingsScreen extends StatefulWidget{
   @override
@@ -16,16 +16,16 @@ class _PercentageSheetSettingsScreenState extends State<PercentageSheetSettingsS
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PercentageEditWidget(MoneyManagementCalculator.instance.mmcSettings.percentageSheet.commission()),
-          PercentageEditWidget(MoneyManagementCalculator.instance.mmcSettings.percentageSheet.cashback()),
-          PercentageEditWidget(MoneyManagementCalculator.instance.mmcSettings.percentageSheet.savings()),
-          PercentageEditWidget(MoneyManagementCalculator.instance.mmcSettings.percentageSheet.business()),
-          PercentageEditWidget(MoneyManagementCalculator.instance.mmcSettings.percentageSheet.investments()),
+          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.commission()),
+          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.cashback()),
+          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.savings()),
+          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.business()),
+          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.investments()),
           RaisedButton(
             child: Text("Reset"),
             onPressed: (){
               setState(() {
-                MoneyManagementCalculator.instance.mmcSettings.percentageSheet.resetValues();
+                MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.resetValues();
               });
             },
           ),
