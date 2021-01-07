@@ -23,9 +23,11 @@ class _PercentageEditWidgetState extends State<PercentageEditWidget> {
             icon: Icon(Icons.west),
             label: Text("Subtract"),
             onPressed: (){
-              setState(() {
-                widget._percentage.setValue(widget._percentage.value() - 1);
-              });
+              if(widget._percentage.value() > widget._percentage.minValue()) {
+                setState(() {
+                  widget._percentage.setValue(widget._percentage.value() - 1);
+                });
+              }
             },
           ),
           Column(
@@ -39,9 +41,11 @@ class _PercentageEditWidgetState extends State<PercentageEditWidget> {
             icon: Text("Add"),
             label: Icon(Icons.east),
             onPressed: (){
-              setState(() {
-                widget._percentage.setValue(widget._percentage.value() + 1);
-              });
+              if(widget._percentage.value() < widget._percentage.maxValue()) {
+                setState(() {
+                  widget._percentage.setValue(widget._percentage.value() + 1);
+                });
+              }
             },
           ),
         ],
