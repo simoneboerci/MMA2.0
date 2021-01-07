@@ -4,6 +4,7 @@ import '../models/assets/asset_list.dart';
 import '../models/managers/money_management_calculator.dart';
 
 import 'mmc_func_settings_screen.dart';
+import 'app_settings_screen.dart';
 
 class CalculatorScreen extends StatefulWidget{
   @override
@@ -51,6 +52,18 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               );
             },
             child: Text("MMC Settings"),
+          ),
+          SizedBox(height: 10,),
+          RaisedButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AppSettingsScreen()
+                ),
+              );
+            },
+            child: Text("App settings"),
           ),
         ],
       ),
