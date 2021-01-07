@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/assets/asset_list.dart';
 import '../models/managers/money_management_calculator.dart';
 
-import 'mmc_settings_screen.dart';
+import 'mmc_func_settings_screen.dart';
 
 class CalculatorScreen extends StatefulWidget{
   @override
@@ -46,7 +46,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MMCSettingsScreen()
+                  builder: (context) => MMCFuncSettingsScreen()
                 ),
               );
             },
