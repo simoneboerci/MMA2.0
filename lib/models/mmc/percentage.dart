@@ -6,27 +6,36 @@ class Percentage{
 
   //Private Variables
 
+  double _defaultValue;
+
   double _value;
   double _minValue;
   double _maxValue;
 
   Percentage(String name, double defaultValue, double minValue, double maxValue){
     this.name = name;
-    this._value = defaultValue;
+
     this._minValue = minValue;
     this._maxValue = maxValue;
 
     _verifyMinMax();
-    _clampValue();
+
+    this._defaultValue = defaultValue;
+
+    _clampValue(_defaultValue);
+
+    this._value = _defaultValue;
   }
 
   //Public Methods
+
+  void resetValue() => _value = _defaultValue;
 
   //Setters
 
   void setValue(double value){
     _value = value;
-    _clampValue();
+    _clampValue(_value);
   }
 
   void setMinValue(double minValue){
@@ -47,11 +56,11 @@ class Percentage{
       _maxValue = _minValue + 0.1;
   }
 
-  void _clampValue(){
-    if(_value < _minValue)
-      _value = _minValue;
-    else if(_value > _maxValue)
-      _value = _maxValue;
+  void _clampValue(double value){
+    if(value < _minValue)
+      value = _minValue;
+    else if(value > _maxValue)
+      value = _maxValue;
   }
 
   //Getters

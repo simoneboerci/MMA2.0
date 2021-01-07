@@ -7,4 +7,8 @@ abstract class Fund{
   double money;
 
   Fund(this.name, this.description, this.money);
+
+  //Public Methods
+
+  void reset() => money = 0;
 }

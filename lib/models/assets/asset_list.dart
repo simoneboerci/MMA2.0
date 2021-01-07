@@ -27,6 +27,17 @@ class AssetList{
 
   //Public Methods
 
+  void reset(){
+    _mainCard.reset();
+    _personalCard.reset();
+    _businessCard.reset();
+
+    _investmentsAccount.reset();
+    _speculationAccount.reset();
+    _savingsAccount.reset();
+    _bonusAccount.reset();
+  }
+
   //Getters
 
   double physicalAssetValue() => _mainCard.money + _personalCard.money + _businessCard.money;
