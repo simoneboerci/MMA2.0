@@ -1,7 +1,7 @@
 import '../assets/asset_list.dart';
 
 import '../mmc/func/base/mmc_func.dart';
-import '../mmc/func/default_mmc_func.dart';
+import 'mmc_functions.dart';
 
 class MoneyManagementCalculator{
 
@@ -11,11 +11,14 @@ class MoneyManagementCalculator{
 
   //Private Variables
 
-  MMCFunc _func = DefaultMMCFunc.defaultSettings();
+  MMCFunc _defaultFunc = MMCFunctions.percentageMMCFunc;
+  MMCFunc _func;
 
   MoneyManagementCalculator(){
     if(instance == null)
       instance = this;
+
+    this._func = _defaultFunc;
   }
 
   //Public Methods

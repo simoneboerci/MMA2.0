@@ -3,13 +3,13 @@ import 'file:///G:/Desktop/AndroidStudio/AndroidStudio_progetti/.cloud/MMA2.0/li
 
 import 'base/mmc_func.dart';
 
-class DefaultMMCFunc extends MMCFunc{
+class PercentageMMCFunc extends MMCFunc{
 
   DefaultMMCFuncSettings settings;
 
-  DefaultMMCFunc(this.settings);
+  PercentageMMCFunc(this.settings);
 
-  DefaultMMCFunc.defaultSettings() : this(DefaultMMCFuncSettings.defaultSettings());
+  PercentageMMCFunc.defaultSettings() : this(DefaultMMCFuncSettings.defaultSettings());
 
   @override
   AssetList run(double amount) {

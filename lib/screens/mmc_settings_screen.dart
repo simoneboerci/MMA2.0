@@ -14,7 +14,7 @@ class MMCSettingsScreen extends StatelessWidget{
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PercentageSheetSettingsScreen())
+                MaterialPageRoute(builder: (context) => PercentageMMCFuncSettingsScreen())
               );
             },
             child: Text("Percentage Sheet"),

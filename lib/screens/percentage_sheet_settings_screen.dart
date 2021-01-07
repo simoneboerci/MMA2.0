@@ -4,28 +4,28 @@ import '../widgets/percentage_edit_widget.dart';
 
 import '../models/managers/mmc_functions.dart';
 
-class PercentageSheetSettingsScreen extends StatefulWidget{
+class PercentageMMCFuncSettingsScreen extends StatefulWidget{
   @override
-  _PercentageSheetSettingsScreenState createState() => _PercentageSheetSettingsScreenState();
+  _PercentageMMCFuncSettingsScreenState createState() => _PercentageMMCFuncSettingsScreenState();
 }
 
-class _PercentageSheetSettingsScreenState extends State<PercentageSheetSettingsScreen> {
+class _PercentageMMCFuncSettingsScreenState extends State<PercentageMMCFuncSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.commission()),
-          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.cashback()),
-          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.savings()),
-          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.business()),
-          PercentageEditWidget(MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.investments()),
+          PercentageEditWidget(MMCFunctions.percentageMMCFunc.settings.percentageSheet.commission()),
+          PercentageEditWidget(MMCFunctions.percentageMMCFunc.settings.percentageSheet.cashback()),
+          PercentageEditWidget(MMCFunctions.percentageMMCFunc.settings.percentageSheet.savings()),
+          PercentageEditWidget(MMCFunctions.percentageMMCFunc.settings.percentageSheet.business()),
+          PercentageEditWidget(MMCFunctions.percentageMMCFunc.settings.percentageSheet.investments()),
           RaisedButton(
             child: Text("Reset"),
             onPressed: (){
               setState(() {
-                MMCFunctions.instance.defaultMMCFunc.settings.percentageSheet.resetValues();
+                MMCFunctions.percentageMMCFunc.settings.percentageSheet.resetValues();
               });
             },
           ),
